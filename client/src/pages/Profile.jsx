@@ -1,11 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useRef, useState, useEffect } from 'react';
-import {
-  getDownloadURL,
-  getStorage,
-  ref,
-  uploadBytesResumable,
-} from 'firebase/storage';
+import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 import { app } from '../firebase';
 import { useDispatch } from 'react-redux';
 import {
@@ -33,6 +28,7 @@ export default function Profile() {
       handleFileUpload(image);
     }
   }, [image]);
+
   const handleFileUpload = async (image) => {
     const storage = getStorage(app);
     const fileName = new Date().getTime() + image.name;
@@ -41,8 +37,7 @@ export default function Profile() {
     uploadTask.on(
       'state_changed',
       (snapshot) => {
-        const progress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         setImagePercent(Math.round(progress));
       },
       (error) => {
@@ -55,6 +50,7 @@ export default function Profile() {
       }
     );
   };
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
@@ -102,15 +98,18 @@ export default function Profile() {
   const handleSignOut = async () => {
     try {
       await fetch('/api/auth/signout');
-      dispatch(signOut())
+      dispatch(signOut());
     } catch (error) {
       console.log(error);
     }
   };
+
   return (
-    <div className='p-3 max-w-lg mx-auto'>
-      <h1 className='text-3xl font-semibold text-center my-7'>Profile</h1>
-      <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
+    <div className='p-6 max-w-lg mx-auto mt-40 bg-white dark:bg-gray-900 rounded-lg shadow-md'>
+      <h1 className='text-3xl font-semibold text-center mb-7 text-gray-900 dark:text-gray-100'>
+        Profile
+      </h1>
+      <form onSubmit={handleSubmit} className='flex flex-col gap-6'>
         <input
           type='file'
           ref={fileRef}
@@ -118,25 +117,19 @@ export default function Profile() {
           accept='image/*'
           onChange={(e) => setImage(e.target.files[0])}
         />
-        {/* 
-      firebase storage rules:  
-      allow read;
-      allow write: if
-      request.resource.size < 2 * 1024 * 1024 &&
-      request.resource.contentType.matches('image/.*') */}
-        <img
-          src={formData.profilePicture || currentUser.profilePicture}
-          alt='profile'
-          className='h-24 w-24 self-center cursor-pointer rounded-full object-cover mt-2'
-          onClick={() => fileRef.current.click()}
-        />
-        <p className='text-sm self-center'>
+        <div className='flex justify-center'>
+          <img
+            src={formData.profilePicture || currentUser.profilePicture}
+            alt='profile'
+            className='h-24 w-24 cursor-pointer rounded-full object-cover'
+            onClick={() => fileRef.current.click()}
+          />
+        </div>
+        <p className='text-sm text-center'>
           {imageError ? (
-            <span className='text-red-700'>
-              Error uploading image (file size must be less than 2 MB)
-            </span>
+            <span className='text-red-700'>Error uploading image (file size must be less than 2 MB)</span>
           ) : imagePercent > 0 && imagePercent < 100 ? (
-            <span className='text-slate-700'>{`Uploading: ${imagePercent} %`}</span>
+            <span className='text-gray-700 dark:text-gray-300'>{`Uploading: ${imagePercent} %`}</span>
           ) : imagePercent === 100 ? (
             <span className='text-green-700'>Image uploaded successfully</span>
           ) : (
@@ -148,7 +141,7 @@ export default function Profile() {
           type='text'
           id='username'
           placeholder='Username'
-          className='bg-slate-100 rounded-lg p-3'
+          className='bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 rounded-lg p-3'
           onChange={handleChange}
         />
         <input
@@ -156,35 +149,30 @@ export default function Profile() {
           type='email'
           id='email'
           placeholder='Email'
-          className='bg-slate-100 rounded-lg p-3'
+          className='bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 rounded-lg p-3'
           onChange={handleChange}
         />
         <input
           type='password'
           id='password'
           placeholder='Password'
-          className='bg-slate-100 rounded-lg p-3'
+          className='bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 rounded-lg p-3'
           onChange={handleChange}
         />
-        <button className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'>
+        <button className='bg-gray-700 dark:bg-gray-600 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'>
           {loading ? 'Loading...' : 'Update'}
         </button>
       </form>
-      <div className='flex justify-between mt-5'>
-        <span
-          onClick={handleDeleteAccount}
-          className='text-red-700 cursor-pointer'
-        >
+      <div className='flex justify-between gap-4 mt-6'>
+        <span onClick={handleDeleteAccount} className='text-red-700 cursor-pointer hover:underline'>
           Delete Account
         </span>
-        <span onClick={handleSignOut} className='text-red-700 cursor-pointer'>
-          Sign out
+        <span onClick={handleSignOut} className='text-red-700 cursor-pointer hover:underline'>
+          Sign Out
         </span>
       </div>
-      <p className='text-red-700 mt-5'>{error && 'Something went wrong!'}</p>
-      <p className='text-green-700 mt-5'>
-        {updateSuccess && 'User is updated successfully!'}
-      </p>
+      <p className='text-red-700 mt-5 text-center'>{error && 'Something went wrong!'}</p>
+      <p className='text-green-700 mt-5 text-center'>{updateSuccess && 'User is updated successfully!'}</p>
     </div>
   );
 }

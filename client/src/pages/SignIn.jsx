@@ -1,10 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import {
-  signInStart,
-  signInSuccess,
-  signInFailure,
-} from '../redux/user/userSlice';
+import { signInStart, signInSuccess, signInFailure } from '../redux/user/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import OAuth from '../components/OAuth';
 
@@ -40,39 +36,40 @@ export default function SignIn() {
       dispatch(signInFailure(error));
     }
   };
+
   return (
-    <div className='p-3 max-w-lg mx-auto'>
+    <div className='p-6 max-w-lg mx-auto mt-40'>
       <h1 className='text-3xl text-center font-semibold my-7'>Sign In</h1>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <input
           type='email'
           placeholder='Email'
           id='email'
-          className='bg-slate-100 p-3 rounded-lg'
+          className='bg-gray-100 dark:bg-gray-800 p-3 rounded-lg border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200'
           onChange={handleChange}
         />
         <input
           type='password'
           placeholder='Password'
           id='password'
-          className='bg-slate-100 p-3 rounded-lg'
+          className='bg-gray-100 dark:bg-gray-800 p-3 rounded-lg border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200'
           onChange={handleChange}
         />
         <button
           disabled={loading}
-          className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'
+          className='bg-gray-700 dark:bg-gray-600 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'
         >
           {loading ? 'Loading...' : 'Sign In'}
         </button>
         <OAuth />
       </form>
       <div className='flex gap-2 mt-5'>
-        <p>Dont Have an account?</p>
+        <p>Don't have an account?</p>
         <Link to='/sign-up'>
-          <span className='text-blue-500'>Sign up</span>
+          <span className='text-blue-500 dark:text-blue-400'>Sign up</span>
         </Link>
       </div>
-      <p className='text-red-700 mt-5'>
+      <p className='text-red-700 dark:text-red-400 mt-5'>
         {error ? error.message || 'Something went wrong!' : ''}
       </p>
     </div>
