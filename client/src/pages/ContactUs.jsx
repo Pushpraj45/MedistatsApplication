@@ -1,32 +1,75 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import emailjs from '@emailjs/browser';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function ContactUs() {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm('Medistats_01234', 'template_uk90jes', form.current, 'q-2TIqjiSa7Uo8SpU')
+      .then(
+        () => {
+          toast.success('Message sent successfully!', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        },
+        (error) => {
+          toast.error('Failed to send message. Please try again later.', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        },
+      );
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 p-6">
+      <ToastContainer />
       <div className="max-w-5xl w-full bg-white dark:bg-gray-800 shadow-xl rounded-lg overflow-hidden md:flex md:space-x-8">
         {/* Form Section */}
         <div className="w-full md:w-1/2 p-8">
           <h2 className="text-3xl font-bold mb-8 text-teal-500 dark:text-teal-300">Contact Us</h2>
-          <form>
+          <form ref={form} onSubmit={sendEmail}>
             <div className="mb-6">
-              <label className="block text-gray-700 dark:text-gray-300 text-sm font-semibold">Name</label>
+              <label className="block text-gray-700 dark:text-gray-300 text-mm font-semibold">Name</label>
               <input
                 type="text"
-                className="w-full p-4 border border-gray-300 rounded-lg mt-1 dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                name="user_name"
+                className="w-full p-2 border border-gray-300 rounded-lg mt-1 dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                required
               />
             </div>
             <div className="mb-6">
-              <label className="block text-gray-700 dark:text-gray-300 text-sm font-semibold">Email</label>
+              <label className="block text-gray-700 dark:text-gray-300 text-mm font-semibold">Email</label>
               <input
                 type="email"
-                className="w-full p-4 border border-gray-300 rounded-lg mt-1 dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                name="user_email"
+                className="w-full p-2 border border-gray-300 rounded-lg mt-1 dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                required
               />
             </div>
             <div className="mb-6">
-              <label className="block text-gray-700 dark:text-gray-300 text-sm font-semibold">Message</label>
+              <label className="block text-gray-700 dark:text-gray-300 text-mm font-semibold">Message</label>
               <textarea
-                className="w-full p-4 border border-gray-300 rounded-lg mt-1 dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                name="message"
+                className="w-full p-2 border border-gray-300 rounded-lg mt-1 dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-500"
                 rows="6"
+                required
               ></textarea>
             </div>
             <button
@@ -40,7 +83,7 @@ export default function ContactUs() {
         {/* Image Section */}
         <div
           className="hidden md:block md:w-1/2 bg-cover bg-center rounded-lg"
-          style={{ backgroundImage: "url('https://via.placeholder.com/800x1000')" }}
+          style={{ backgroundImage: "url('https://img.freepik.com/free-vector/customer-support-flat-design-illustration_23-2148889374.jpg?t=st=1721809315~exp=1721812915~hmac=f83ebe1db8b42cbe23c176318305c7ce3129ac4b00f13b7535b5ae4c84f2dc65&w=740')" }}
         ></div>
       </div>
     </div>

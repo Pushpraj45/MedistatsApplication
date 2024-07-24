@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; // Import the CSS
+// import './dark-toastify.css'; // Your custom dark mode styles
 
 const blogPosts = [
   {
@@ -18,7 +21,7 @@ const blogPosts = [
       - **Medication:** Medications such as stimulants and non-stimulants can help manage symptoms.
       - **Parent Training:** Training for parents to develop effective strategies for supporting their child.
     `,
-    image: 'https://via.placeholder.com/800x400',
+    image: 'https://img.freepik.com/free-photo/young-woman-doing-speech-therapy-with-little-boy_23-2149110208.jpg?t=st=1721808298~exp=1721811898~hmac=c6b363e9adc5eae6c10e4ad0f8a06213b7b3d1c4d1b6d1e2ac5e8aacdf7f3654&w=996',
     date: '2024-01-01',
     initialLikes: 10,
     initialRating: 4.5,
@@ -39,7 +42,7 @@ const blogPosts = [
       - **Accommodations:** Providing extra time on tests and assignments, and using assistive technology.
       - **Supportive Environment:** Creating a positive and encouraging learning environment.
     `,
-    image: 'https://via.placeholder.com/800x400',
+    image: 'https://img.freepik.com/free-photo/boy-having-occupational-therapy-session-with-psychologist_23-2149091524.jpg?t=st=1721808765~exp=1721812365~hmac=9311dc6e514b2f462a34a48a872977e0f9818720a5f8a683b6ae8b5a9ea3603e&w=996',
     date: '2024-02-01',
     initialLikes: 8,
     initialRating: 4.3,
@@ -64,7 +67,7 @@ const blogPosts = [
       - **Collaborative Planning:** Working with parents and professionals to create inclusive plans.
       - **Regular Feedback:** Gathering feedback from children, parents, and staff to make necessary adjustments.
     `,
-    image: 'https://via.placeholder.com/800x400',
+    image: 'https://img.freepik.com/free-photo/depressed-girl-sitting-sofa-with-female-psychologist-writing-note-clipboard_23-2148026249.jpg?t=st=1721808800~exp=1721812400~hmac=77483f82f36f68b8d4717d2515d897e9fccd9c2dd4c7d6af95fc617c967cff29&w=996',
     date: '2024-03-01',
     initialLikes: 9,
     initialRating: 4.4,
@@ -85,7 +88,7 @@ const blogPosts = [
       - **Relaxation Techniques:** Teaching methods to reduce stress and promote relaxation.
       - **Parental Involvement:** Encouraging parents to support their child through understanding and positive reinforcement.
     `,
-    image: 'https://via.placeholder.com/800x400',
+    image: 'https://img.freepik.com/free-photo/young-family-with-child-posing-abandoned-building_1153-7534.jpg?t=st=1721808974~exp=1721812574~hmac=fc007a97361c923b75f8087dab03eba6904151139da1b78afb015fb51042a278&w=996',
     date: '2024-04-01',
     initialLikes: 7,
     initialRating: 4.1,
@@ -106,7 +109,7 @@ const blogPosts = [
       - **Family Therapy:** Working with the family to address communication issues and develop supportive strategies.
       - **Consistent Discipline:** Applying consistent and fair disciplinary actions to manage behavior.
     `,
-    image: 'https://via.placeholder.com/800x400',
+    image: 'https://img.freepik.com/free-photo/affectionate-relationship-family-field-sunset_23-2150984391.jpg?t=st=1721809003~exp=1721812603~hmac=c560f31c03f2744159fab257650017e66f2437bd4e6a85a30577b78e4025af5d&w=1060',
     date: '2024-05-01',
     initialLikes: 6,
     initialRating: 4.2,
@@ -127,7 +130,7 @@ const blogPosts = [
       - **Creating a Sensory-friendly Environment:** Adjusting the environment to reduce sensory overload.
       - **Routine and Structure:** Providing a predictable routine to help children feel more secure.
     `,
-    image: 'https://via.placeholder.com/800x400',
+    image: 'https://img.freepik.com/free-photo/young-family-countryside-enjoying-nature_1153-7540.jpg?t=st=1721809031~exp=1721812631~hmac=4f7d89322901e4a30e6e22e7afc4ca9e5dfbedc5a46f6c8a3a32008a6da4f132&w=996',
     date: '2024-06-01',
     initialLikes: 5,
     initialRating: 4.0,
@@ -148,7 +151,7 @@ const blogPosts = [
       - **Family Support:** Engaging the family in the treatment process to improve family dynamics.
       - **Educational Support:** Collaborating with schools to create supportive educational plans.
     `,
-    image: 'https://via.placeholder.com/800x400',
+    image: 'https://img.freepik.com/free-photo/happy-family-sitting-floor-looking-mobile_23-2148456326.jpg?t=st=1721808767~exp=1721812367~hmac=17dea946ce7e9dc5579d02dfcac57b641d107f10d1e074eb98639433b4fa1b01&w=996',
     date: '2024-07-01',
     initialLikes: 4,
     initialRating: 3.9,
@@ -169,7 +172,7 @@ const blogPosts = [
       - **Social Skills Training:** Teaching children effective social skills and coping mechanisms.
       - **Professional Therapy:** Engaging in therapy to address underlying fears and anxieties.
     `,
-    image: 'https://via.placeholder.com/800x400',
+    image: 'https://img.freepik.com/free-photo/mother-watching-babies-while-they-are-playing_23-2149355588.jpg?t=st=1721808875~exp=1721812475~hmac=2016ebe12df9d475457e5015c60e4db4b332a8496fd1ff3251421c82ecdeac1c&w=996',
     date: '2024-08-01',
     initialLikes: 6,
     initialRating: 4.1,
@@ -190,12 +193,13 @@ const blogPosts = [
       - **Medication:** Use of selective serotonin reuptake inhibitors (SSRIs) to manage symptoms.
       - **Family Involvement:** Working with families to support the child and implement strategies at home.
     `,
-    image: 'https://via.placeholder.com/800x400',
+    image: 'https://img.freepik.com/free-photo/professional-young-psychologist-trying-get-through-girl-with-problems_23-2148026225.jpg?t=st=1721808840~exp=1721812440~hmac=fdde5195b13d4e1ef3dc54acce7c19602a9c1c9e5ff7671595e81d93e514e257&w=1060',
     date: '2024-09-01',
     initialLikes: 7,
     initialRating: 4.3,
   },
 ];
+ 
 
 export default function BlogPost() {
   const { id } = useParams();
@@ -213,6 +217,7 @@ export default function BlogPost() {
     if (!hasLiked) {
       setLikes(likes + 1);
       setHasLiked(true);
+      toast.success('You liked this post!');
     }
   };
 
@@ -220,11 +225,13 @@ export default function BlogPost() {
     if (!hasRated) {
       setRating(newRating);
       setHasRated(true);
+      toast.success(`You rated this post ${newRating} stars!`);
     }
   };
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12 mt-24">
+      <ToastContainer />
       <img src={post.image} alt={post.title} className="w-full h-64 object-cover mb-6 rounded-lg" />
       <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-4">{post.title}</h1>
       <div className="flex justify-between items-center mb-4">

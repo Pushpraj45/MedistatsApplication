@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import OAuth from '../components/OAuth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function SignUp() {
   const [formData, setFormData] = useState({});
@@ -26,19 +28,55 @@ export default function SignUp() {
       });
       const data = await res.json();
       setLoading(false);
+
+      // Log the response for debugging
+      console.log(data);
+
       if (data.success === false) {
         setError(true);
+        toast.error(data.message || 'Failed to sign up. Please try again later.', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
         return;
       }
-      navigate('/sign-in');
+
+      toast.success('Sign up successful!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+
+      setTimeout(() => {
+        navigate('/sign-in');
+      }, 2000); // Delay for 2 seconds
     } catch (error) {
       setLoading(false);
       setError(true);
+      toast.error('Failed to sign up. Please try again later.', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
   return (
     <div className='p-6 max-w-lg mx-auto mt-40 bg-white dark:bg-gray-900 rounded-lg shadow-md'>
+      <ToastContainer />
       <h1 className='text-3xl font-semibold text-center mb-7 text-gray-900 dark:text-gray-100'>
         Sign Up
       </h1>
@@ -49,6 +87,7 @@ export default function SignUp() {
           id='username'
           className='bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 rounded-lg p-3'
           onChange={handleChange}
+          required
         />
         <input
           type='email'
@@ -56,6 +95,7 @@ export default function SignUp() {
           id='email'
           className='bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 rounded-lg p-3'
           onChange={handleChange}
+          required
         />
         <input
           type='password'
@@ -63,10 +103,11 @@ export default function SignUp() {
           id='password'
           className='bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 rounded-lg p-3'
           onChange={handleChange}
+          required
         />
         <button
           disabled={loading}
-          className='bg-gray-700 dark:bg-gray-600 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'
+          className='bg-gray-700 dark:bg-gray-600 text-white p-3 rounded-lg  font-bold hover:opacity-95 disabled:opacity-80'
         >
           {loading ? 'Loading...' : 'Sign Up'}
         </button>

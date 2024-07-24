@@ -12,6 +12,8 @@ import {
   deleteUserFailure,
   signOut,
 } from '../redux/user/userSlice';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -42,6 +44,15 @@ export default function Profile() {
       },
       (error) => {
         setImageError(true);
+        toast.error('Error uploading image. Please try again.', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) =>
@@ -69,12 +80,39 @@ export default function Profile() {
       const data = await res.json();
       if (data.success === false) {
         dispatch(updateUserFailure(data));
+        toast.error(data.message || 'Failed to update profile. Please try again.', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
         return;
       }
       dispatch(updateUserSuccess(data));
+      toast.success('Profile updated successfully!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       setUpdateSuccess(true);
     } catch (error) {
       dispatch(updateUserFailure(error));
+      toast.error('Failed to update profile. Please try again.', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
@@ -87,11 +125,38 @@ export default function Profile() {
       const data = await res.json();
       if (data.success === false) {
         dispatch(deleteUserFailure(data));
+        toast.error(data.message || 'Failed to delete account. Please try again.', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
         return;
       }
       dispatch(deleteUserSuccess(data));
+      toast.success('Account deleted successfully!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     } catch (error) {
       dispatch(deleteUserFailure(error));
+      toast.error('Failed to delete account. Please try again.', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
@@ -99,13 +164,32 @@ export default function Profile() {
     try {
       await fetch('/api/auth/signout');
       dispatch(signOut());
+      toast.success('Signed out successfully!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     } catch (error) {
       console.log(error);
+      toast.error('Failed to sign out. Please try again.', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
   return (
     <div className='p-6 max-w-lg mx-auto mt-40 bg-white dark:bg-gray-900 rounded-lg shadow-md'>
+      <ToastContainer />
       <h1 className='text-3xl font-semibold text-center mb-7 text-gray-900 dark:text-gray-100'>
         Profile
       </h1>

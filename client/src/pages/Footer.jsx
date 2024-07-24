@@ -25,22 +25,22 @@ function Footer() {
         <div className="mb-6">
           <ul className="list-none p-0">
             <li className="inline-block mx-2">
-              <a href="https://github.com/your-profile" target="_blank" rel="noopener noreferrer" className="text-white hover:text-teal-300 transition">
+              <a href="https://github.com/medistats" target="_blank" rel="noopener noreferrer" className="text-white hover:text-teal-300 transition">
                 <FaGithub size={24} />
               </a>
             </li>
             <li className="inline-block mx-2">
-              <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" className="text-white hover:text-teal-300 transition">
+              <a href="https://linkedin.com/in/medistats" target="_blank" rel="noopener noreferrer" className="text-white hover:text-teal-300 transition">
                 <FaLinkedin size={24} />
               </a>
             </li>
             <li className="inline-block mx-2">
-              <a href="https://twitter.com/your-profile" target="_blank" rel="noopener noreferrer" className="text-white hover:text-teal-300 transition">
+              <a href="https://twitter.com/medistats" target="_blank" rel="noopener noreferrer" className="text-white hover:text-teal-300 transition">
                 <FaTwitter size={24} />
               </a>
             </li>
             <li className="inline-block mx-2">
-              <a href="mailto:your-email@example.com" className="text-white hover:text-teal-300 transition">
+              <a href="mailto:medistats@example.com" className="text-white hover:text-teal-300 transition">
                 <IoIosMail size={24} />
               </a>
             </li>

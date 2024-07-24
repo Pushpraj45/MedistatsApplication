@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Toggle from 'react-toggle';
 import "react-toggle/style.css";
+// import { TbHealthRecognition } from "react-icons/tb";
+import { GiBrain } from "react-icons/gi";
+
+
 import { FaHome, FaInfoCircle, FaQuestionCircle, FaUserCircle, FaSignInAlt, FaLifeRing } from 'react-icons/fa';
 
 export default function Header() {
@@ -25,22 +29,24 @@ export default function Header() {
   };
 
   return (
-    <header className={`${darkMode ? 'bg-dark-blue' : 'bg-light-blue'} text-light shadow-md fixed top-0 w-full z-10`}>
+    <header className={`${darkMode ? 'bg-dark-blue text-light' : 'bg-white text-dark'} shadow-md fixed top-0 w-full z-10 transition-colors duration-300`}>
       <div className='flex justify-between items-center max-w-6xl mx-auto p-4'>
-        <Link to='/' className='text-2xl font-bold hover:text-gray-300 flex items-center'>
-          <FaLifeRing className='mr-2' /> Medistats
+        <Link to='/' className={`text-2xl font-bold flex items-center ${darkMode ? 'hover:text-light-blue' : 'hover:text-dark-blue'} transition-colors duration-300`}>
+        <GiBrain 
+ 
+        className='mr-2' /> Medistats
         </Link>
         <nav className='hidden md:flex gap-8 items-center'>
-          <Link to='/' className='hover:text-gray-300 flex items-center'>
+          <Link to='/' className={`${darkMode ? 'hover:text-light-blue' : 'hover:text-dark-blue'} flex items-center transition-colors duration-300`}>
             <FaHome className='mr-2' /> Home
           </Link>
-          <Link to='/features' className='hover:text-gray-300 flex items-center'>
+          <Link to='/features' className={`${darkMode ? 'hover:text-light-blue' : 'hover:text-dark-blue'} flex items-center transition-colors duration-300`}>
             <FaInfoCircle className='mr-2' /> Features
           </Link>
-          <Link to='/faq' className='hover:text-gray-300 flex items-center'>
+          <Link to='/faq' className={`${darkMode ? 'hover:text-light-blue' : 'hover:text-dark-blue'} flex items-center transition-colors duration-300`}>
             <FaQuestionCircle className='mr-2' /> FAQ
           </Link>
-          <Link to='/test' className='hover:text-gray-300 flex items-center'>
+          <Link to='/test' className={`${darkMode ? 'hover:text-light-blue' : 'hover:text-dark-blue'} flex items-center transition-colors duration-300`}>
             <FaUserCircle className='mr-2' /> Test
           </Link>
           {currentUser ? (
@@ -52,25 +58,24 @@ export default function Header() {
                 onClick={toggleDropdown}
               />
               {dropdownOpen && (
-                <div className='absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10'>
+                <div className={`absolute right-0 mt-2 w-48 ${darkMode ? 'bg-dark-gray' : 'bg-white'} rounded-md shadow-lg z-10 transition-colors duration-300`}>
                   <Link
                     to='/profile'
-                    className='block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-t-md'
+                    className={`block px-4 py-2 ${darkMode ? 'text-light hover:bg-dark-hover' : 'text-dark hover:bg-light-hover'} rounded-t-md transition-colors duration-300`}
                   >
                     Profile
                   </Link>
                   <Link
                     to='/profile'
-                    className='block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                    className={`block px-4 py-2 ${darkMode ? 'text-light hover:bg-dark-hover' : 'text-dark hover:bg-light-hover'} transition-colors duration-300`}
                   >
                     Settings
                   </Link>
-                   
                 </div>
               )}
             </div>
           ) : (
-            <Link to='/sign-in' className='hover:text-gray-300 flex items-center'>
+            <Link to='/sign-in' className={`${darkMode ? 'hover:text-light-blue' : 'hover:text-dark-blue'} flex items-center transition-colors duration-300`}>
               <FaSignInAlt className='mr-2' /> Sign In
             </Link>
           )}
@@ -94,31 +99,39 @@ export default function Header() {
       </div>
       {/* Mobile Menu */}
       {dropdownOpen && (
-        <nav className='md:hidden bg-dark-blue text-light'>
-          <Link to='/' className='block px-4 py-2 hover:bg-gray-700'>
+        <nav className={`${darkMode ? 'bg-dark-blue text-light' : 'bg-white text-dark'} md:hidden transition-colors duration-300`}>
+          <Link to='/' className={`block px-4 py-2 ${darkMode ? 'hover:bg-dark-hover' : 'hover:bg-light-hover'} transition-colors duration-300`}>
             <FaHome className='mr-2' /> Home
           </Link>
-          <Link to='/features' className='block px-4 py-2 hover:bg-gray-700'>
+          <Link to='/features' className={`block px-4 py-2 ${darkMode ? 'hover:bg-dark-hover' : 'hover:bg-light-hover'} transition-colors duration-300`}>
             <FaInfoCircle className='mr-2' /> Features
           </Link>
-          <Link to='/faq' className='block px-4 py-2 hover:bg-gray-700'>
+          <Link to='/faq' className={`block px-4 py-2 ${darkMode ? 'hover:bg-dark-hover' : 'hover:bg-light-hover'} transition-colors duration-300`}>
             <FaQuestionCircle className='mr-2' /> FAQ
           </Link>
-          <Link to='/test' className='block px-4 py-2 hover:bg-gray-700'>
+          <Link to='/test' className={`block px-4 py-2 ${darkMode ? 'hover:bg-dark-hover' : 'hover:bg-light-hover'} transition-colors duration-300`}>
             <FaUserCircle className='mr-2' /> Test
           </Link>
+          <div className='flex items-center ml-4'>
+            <span className='mr-2'>{darkMode ? 'Dark' : 'Light'} </span>
+            <Toggle
+              defaultChecked={darkMode}
+              icons={{ checked: '🌙', unchecked: '🔆' }}
+              onChange={() => setDarkMode(!darkMode)}
+              className='toggle'
+            />
+          </div>
           {currentUser ? (
             <>
-              <Link to='/profile' className='block px-4 py-2 hover:bg-gray-700'>
+              <Link to='/profile' className={`block px-4 py-2 ${darkMode ? 'hover:bg-dark-hover' : 'hover:bg-light-hover'} transition-colors duration-300`}>
                 Profile
               </Link>
-              <Link to='/profile' className='block px-4 py-2 hover:bg-gray-700'>
+              <Link to='/profile' className={`block px-4 py-2 ${darkMode ? 'hover:bg-dark-hover' : 'hover:bg-light-hover'} transition-colors duration-300`}>
                 Settings
               </Link>
-               
             </>
           ) : (
-            <Link to='/sign-in' className='block px-4 py-2 hover:bg-gray-700'>
+            <Link to='/sign-in' className={`block px-4 py-2 ${darkMode ? 'hover:bg-dark-hover' : 'hover:bg-light-hover'} transition-colors duration-300`}>
               <FaSignInAlt className='mr-2' /> Sign In
             </Link>
           )}

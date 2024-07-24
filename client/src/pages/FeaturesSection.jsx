@@ -36,9 +36,9 @@ function FeaturesSection() {
   ];
 
   return (
-    <div className="py-12 px-4 bg-gray-100 dark:bg-gray-800 ">
-      <div className="max-w-6xl mx-auto mt-24">
-        <h2 className="text-6xl md:text-6xl font-bold mb-6 text-center text-teal-500 dark:text-teal-300">Features</h2>
+    <div className="py-12 px-4 bg-gray-100 dark:bg-gray-900 ">
+      <div className="max-w-6xl mx-auto mt-16">
+        <h2 className="text-5xl md:text-5xl font-bold mb-6 text-center text-teal-500 dark:text-teal-300">Features</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature) => (
             <div key={feature.title} className="bg-white shadow-md rounded-lg p-8 text-center dark:bg-gray-700 dark:text-gray-100 transition-transform transform hover:scale-105">
