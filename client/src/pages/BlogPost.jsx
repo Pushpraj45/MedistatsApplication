@@ -3,6 +3,15 @@ import { useParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; // Import the CSS
 // import './dark-toastify.css'; // Your custom dark mode styles
+import image1 from './assets/images/blog1.avif';
+import image2 from './assets/images/blog2.avif';
+import image3 from './assets/images/blog3.avif';
+import image4 from './assets/images/blog4.avif';
+import image5 from  './assets/images/blog5.avif';
+import image6 from './assets/images/blog6.avif';
+import image7 from './assets/images/blog7.avif';
+import image8 from './assets/images/blog3.avif';
+import image9 from  './assets/images/blog5.avif';
 
 const blogPosts = [
   {
@@ -11,17 +20,17 @@ const blogPosts = [
     content: `
       Attention-Deficit/Hyperactivity Disorder (ADHD) is a common behavioral disorder in children. It affects their ability to focus and control impulses. Early diagnosis and intervention are crucial for managing ADHD effectively.
 
-      **Key Characteristics:**
-      - **Inattention:** Difficulty sustaining attention in tasks or play activities.
-      - **Hyperactivity:** Excessive fidgeting, restlessness, and difficulty staying seated.
-      - **Impulsivity:** Interrupting others, difficulty waiting for one’s turn.
+      Key Characteristic
+      - Inattentio Difficulty sustaining attention in tasks or play activities.
+      - Hyperactivit Excessive fidgeting, restlessness, and difficulty staying seated.
+      - Impulsivit Interrupting others, difficulty waiting for one’s turn.
 
-      **Management Strategies:**
-      - **Behavioral Therapy:** Structured interventions to improve behavior and executive functioning.
-      - **Medication:** Medications such as stimulants and non-stimulants can help manage symptoms.
-      - **Parent Training:** Training for parents to develop effective strategies for supporting their child.
+      Management Strategies:
+      - Behavioral Therapy: Structured interventions to improve behavior and executive functioning.
+      - Medication: Medications such as stimulants and non-stimulants can help manage symptoms.
+      - Parent Training: Training for parents to develop effective strategies for supporting their child.
     `,
-    image: 'https://img.freepik.com/free-photo/young-woman-doing-speech-therapy-with-little-boy_23-2149110208.jpg?t=st=1721808298~exp=1721811898~hmac=c6b363e9adc5eae6c10e4ad0f8a06213b7b3d1c4d1b6d1e2ac5e8aacdf7f3654&w=996',
+    image: image1,
     date: '2024-01-01',
     initialLikes: 10,
     initialRating: 4.5,
@@ -32,17 +41,17 @@ const blogPosts = [
     content: `
       Dyslexia is a specific learning disability that affects reading and language processing skills. Children with dyslexia may struggle with decoding words, reading fluently, and understanding text.
 
-      **Signs of Dyslexia:**
-      - **Reading Difficulty:** Struggles with reading accuracy and fluency.
-      - **Spelling Issues:** Challenges with spelling and writing.
-      - **Difficulty with Phonological Awareness:** Problems recognizing and manipulating sounds in words.
+      Signs of Dyslexia:
+      - Reading Difficulty:** Struggles with reading accuracy and fluency.
+      - Spelling Issues:** Challenges with spelling and writing.
+      - Difficulty with Phonological Awareness:** Problems recognizing and manipulating sounds in words.
 
-      **Support Strategies:**
-      - **Specialized Instruction:** Use of multisensory approaches and structured literacy programs.
-      - **Accommodations:** Providing extra time on tests and assignments, and using assistive technology.
-      - **Supportive Environment:** Creating a positive and encouraging learning environment.
+      Support Strategies:
+      - Specialized Instruction: Use of multisensory approaches and structured literacy programs.
+      - Accommodations: Providing extra time on tests and assignments, and using assistive technology.
+      - Supportive Environment: Creating a positive and encouraging learning environment.
     `,
-    image: 'https://img.freepik.com/free-photo/boy-having-occupational-therapy-session-with-psychologist_23-2149091524.jpg?t=st=1721808765~exp=1721812365~hmac=9311dc6e514b2f462a34a48a872977e0f9818720a5f8a683b6ae8b5a9ea3603e&w=996',
+    image: image2,
     date: '2024-02-01',
     initialLikes: 8,
     initialRating: 4.3,
@@ -53,21 +62,21 @@ const blogPosts = [
     content: `
       Autism Spectrum Disorder (ASD) is a developmental disorder that affects communication, behavior, and social interactions. Supportive strategies can significantly improve the quality of life for children with ASD.
 
-      **Key Elements:**
-      - **Sensory-friendly Design:** Reducing sensory overload through thoughtful design.
-      - **Structured Activities:** Providing clear and structured activities.
-      - **Supportive Staff:** Training staff to understand and support children with autism.
+      Key Elements:
+      - Sensory-friendly Design: Reducing sensory overload through thoughtful design.
+      - Structured Activities: Providing clear and structured activities.
+      - Supportive Staff: Training staff to understand and support children with autism.
 
-      **Benefits:**
-      - **Increased Participation:** Encouraging active participation in various activities.
-      - **Enhanced Social Skills:** Providing opportunities to interact with peers.
-      - **Improved Behavior:** Creating a calming and supportive environment.
+      Benefits:
+      - Increased Participation: Encouraging active participation in various activities.
+      - Enhanced Social Skills: Providing opportunities to interact with peers.
+      - Improved Behavior: Creating a calming and supportive environment.
 
-      **Implementation:**
-      - **Collaborative Planning:** Working with parents and professionals to create inclusive plans.
-      - **Regular Feedback:** Gathering feedback from children, parents, and staff to make necessary adjustments.
+      Implementation:
+      - Collaborative Planning:** Working with parents and professionals to create inclusive plans.
+      - Regular Feedback:** Gathering feedback from children, parents, and staff to make necessary adjustments.
     `,
-    image: 'https://img.freepik.com/free-photo/depressed-girl-sitting-sofa-with-female-psychologist-writing-note-clipboard_23-2148026249.jpg?t=st=1721808800~exp=1721812400~hmac=77483f82f36f68b8d4717d2515d897e9fccd9c2dd4c7d6af95fc617c967cff29&w=996',
+    image: image3,
     date: '2024-03-01',
     initialLikes: 9,
     initialRating: 4.4,
@@ -78,17 +87,17 @@ const blogPosts = [
     content: `
       Anxiety disorders are common among children and can affect their daily functioning. Recognizing the signs early can help in providing timely support and treatment.
 
-      **Signs of Anxiety:**
-      - **Excessive Worry:** Frequent and intense worries about various aspects of life.
-      - **Physical Symptoms:** Complaints of headaches, stomachaches, or other physical symptoms without a clear cause.
-      - **Avoidance Behavior:** Avoiding situations or places that trigger anxiety.
+      Signs of Anxiety:
+      - Excessive Worry: Frequent and intense worries about various aspects of life.
+      - Physical Symptoms: Complaints of headaches, stomachaches, or other physical symptoms without a clear cause.
+      - Avoidance Behavior: Avoiding situations or places that trigger anxiety.
 
-      **Support Strategies:**
-      - **Cognitive Behavioral Therapy (CBT):** Helping children manage their anxiety through structured therapy sessions.
-      - **Relaxation Techniques:** Teaching methods to reduce stress and promote relaxation.
-      - **Parental Involvement:** Encouraging parents to support their child through understanding and positive reinforcement.
+      Support Strategies:
+      - Cognitive Behavioral Therapy (CBT): Helping children manage their anxiety through structured therapy sessions.
+      - Relaxation Techniques: Teaching methods to reduce stress and promote relaxation.
+      - Parental Involvement: Encouraging parents to support their child through understanding and positive reinforcement.
     `,
-    image: 'https://img.freepik.com/free-photo/young-family-with-child-posing-abandoned-building_1153-7534.jpg?t=st=1721808974~exp=1721812574~hmac=fc007a97361c923b75f8087dab03eba6904151139da1b78afb015fb51042a278&w=996',
+    image: image4,
     date: '2024-04-01',
     initialLikes: 7,
     initialRating: 4.1,
@@ -99,17 +108,17 @@ const blogPosts = [
     content: `
       Oppositional Defiant Disorder (ODD) is characterized by a pattern of angry, irritable mood, argumentative behavior, or vindictiveness. Understanding and managing ODD is crucial for improving behavior and relationships.
 
-      **Symptoms of ODD:**
-      - **Frequent Temper Tantrums:** Outbursts of anger and frustration.
-      - **Argumentative Behavior:** Consistently arguing with authority figures.
-      - **Vindictiveness:** Seeking revenge or being spiteful.
+      Symptoms of ODD:
+      - Frequent Temper Tantrums: Outbursts of anger and frustration.
+      - Argumentative Behavior: Consistently arguing with authority figures.
+      - Vindictiveness: Seeking revenge or being spiteful.
 
-      **Management Strategies:**
-      - **Behavioral Interventions:** Implementing strategies to modify behavior and improve compliance.
-      - **Family Therapy:** Working with the family to address communication issues and develop supportive strategies.
-      - **Consistent Discipline:** Applying consistent and fair disciplinary actions to manage behavior.
+      Management Strategies:
+      - Behavioral Interventions: Implementing strategies to modify behavior and improve compliance.
+      - Family Therapy: Working with the family to address communication issues and develop supportive strategies.
+      - Consistent Discipline: Applying consistent and fair disciplinary actions to manage behavior.
     `,
-    image: 'https://img.freepik.com/free-photo/affectionate-relationship-family-field-sunset_23-2150984391.jpg?t=st=1721809003~exp=1721812603~hmac=c560f31c03f2744159fab257650017e66f2437bd4e6a85a30577b78e4025af5d&w=1060',
+    image: image5,
     date: '2024-05-01',
     initialLikes: 6,
     initialRating: 4.2,
@@ -120,17 +129,17 @@ const blogPosts = [
     content: `
       Sensory Processing Disorder (SPD) involves difficulties in processing and responding to sensory information. Children with SPD may have unusual responses to sensory stimuli.
 
-      **Common Symptoms:**
-      - **Overreacting to Sensory Input:** Extreme responses to sounds, textures, or lights.
-      - **Underreacting to Sensory Input:** Lack of response to sensory stimuli that would typically be noticed.
-      - **Difficulty with Coordination:** Challenges with motor skills and coordination.
+      Common Symptoms:
+      - Overreacting to Sensory Input: Extreme responses to sounds, textures, or lights.
+      - Underreacting to Sensory Input: Lack of response to sensory stimuli that would typically be noticed.
+      - Difficulty with Coordination: Challenges with motor skills and coordination.
 
-      **Support Strategies:**
-      - **Sensory Integration Therapy:** Using activities to help children process sensory information more effectively.
-      - **Creating a Sensory-friendly Environment:** Adjusting the environment to reduce sensory overload.
-      - **Routine and Structure:** Providing a predictable routine to help children feel more secure.
+      Support Strategies:
+      - ensory Integration Therapy: Using activities to help children process sensory information more effectively.
+      - Creating a Sensory-friendly Environment: Adjusting the environment to reduce sensory overload.
+      - Routine and Structure: Providing a predictable routine to help children feel more secure.
     `,
-    image: 'https://img.freepik.com/free-photo/young-family-countryside-enjoying-nature_1153-7540.jpg?t=st=1721809031~exp=1721812631~hmac=4f7d89322901e4a30e6e22e7afc4ca9e5dfbedc5a46f6c8a3a32008a6da4f132&w=996',
+    image: image6,
     date: '2024-06-01',
     initialLikes: 5,
     initialRating: 4.0,
@@ -141,17 +150,17 @@ const blogPosts = [
     content: `
       Conduct Disorder is characterized by a persistent pattern of behavior that violates societal norms and the rights of others. Identifying and addressing this disorder early can lead to better outcomes.
 
-      **Signs of Conduct Disorder:**
-      - **Aggressive Behavior:** Physical fights or cruelty to animals.
-      - **Deceitfulness:** Lying or stealing.
-      - **Severe Rule Violations:** Breaking rules and engaging in illegal activities.
+      Signs of Conduct Disorder:
+      - Aggressive Behavior: Physical fights or cruelty to animals.
+      - Deceitfulness: Lying or stealing.
+      - Severe Rule Violations: Breaking rules and engaging in illegal activities.
 
-      **Support Strategies:**
-      - **Therapeutic Interventions:** Utilizing therapies that address behavior and promote positive change.
-      - **Family Support:** Engaging the family in the treatment process to improve family dynamics.
-      - **Educational Support:** Collaborating with schools to create supportive educational plans.
+      Support Strategies:
+      - Therapeutic Interventions: Utilizing therapies that address behavior and promote positive change.
+      - Family Support: Engaging the family in the treatment process to improve family dynamics.
+      - Educational Support: Collaborating with schools to create supportive educational plans.
     `,
-    image: 'https://img.freepik.com/free-photo/happy-family-sitting-floor-looking-mobile_23-2148456326.jpg?t=st=1721808767~exp=1721812367~hmac=17dea946ce7e9dc5579d02dfcac57b641d107f10d1e074eb98639433b4fa1b01&w=996',
+    image: image7,
     date: '2024-07-01',
     initialLikes: 4,
     initialRating: 3.9,
@@ -162,17 +171,17 @@ const blogPosts = [
     content: `
       Social Anxiety Disorder involves intense fear of social situations where one might be judged or scrutinized. It can significantly impact a child's social development.
 
-      **Symptoms of Social Anxiety:**
-      - **Fear of Social Interaction:** Extreme fear of meeting new people or speaking in public.
-      - **Avoidance Behavior:** Avoiding social situations whenever possible.
-      - **Physical Symptoms:** Symptoms like sweating, trembling, or nausea in social settings.
+      Symptoms of Social Anxiety:
+      - **Fear of Social Interaction: Extreme fear of meeting new people or speaking in public.
+      - **Avoidance Behavior: Avoiding social situations whenever possible.
+      - **Physical Symptoms: Symptoms like sweating, trembling, or nausea in social settings.
 
-      **Support Strategies:**
-      - **Gradual Exposure:** Slowly introducing children to social situations to build confidence.
-      - **Social Skills Training:** Teaching children effective social skills and coping mechanisms.
-      - **Professional Therapy:** Engaging in therapy to address underlying fears and anxieties.
+      Support Strategies:
+      - Gradual Exposure: Slowly introducing children to social situations to build confidence.
+      - Social Skills Training: Teaching children effective social skills and coping mechanisms.
+      - Professional Therapy: Engaging in therapy to address underlying fears and anxieties.
     `,
-    image: 'https://img.freepik.com/free-photo/mother-watching-babies-while-they-are-playing_23-2149355588.jpg?t=st=1721808875~exp=1721812475~hmac=2016ebe12df9d475457e5015c60e4db4b332a8496fd1ff3251421c82ecdeac1c&w=996',
+    image: image8,
     date: '2024-08-01',
     initialLikes: 6,
     initialRating: 4.1,
@@ -183,17 +192,17 @@ const blogPosts = [
     content: `
       Obsessive-Compulsive Disorder (OCD) involves persistent, unwanted thoughts and repetitive behaviors. Early recognition and intervention are key to managing OCD effectively.
 
-      **Symptoms of OCD:**
-      - **Obsessions:** Persistent, intrusive thoughts or images.
-      - **Compulsions:** Repetitive behaviors or mental acts performed to alleviate the distress caused by obsessions.
-      - **Interference with Daily Life:** Symptoms that disrupt daily activities and routines.
+      Symptoms of OCD:
+      - Obsessions: Persistent, intrusive thoughts or images.
+      - Compulsions: Repetitive behaviors or mental acts performed to alleviate the distress caused by obsessions.
+      - Interference with Daily Life: Symptoms that disrupt daily activities and routines.
 
-      **Management Strategies:**
-      - **Cognitive Behavioral Therapy (CBT):** Therapy focusing on changing patterns of thinking and behavior.
-      - **Medication:** Use of selective serotonin reuptake inhibitors (SSRIs) to manage symptoms.
-      - **Family Involvement:** Working with families to support the child and implement strategies at home.
+      Management Strategies:
+      - Cognitive Behavioral Therapy (CBT):** Therapy focusing on changing patterns of thinking and behavior.
+      - Medication: Use of selective serotonin reuptake inhibitors (SSRIs) to manage symptoms.
+      - Family Involvement: Working with families to support the child and implement strategies at home.
     `,
-    image: 'https://img.freepik.com/free-photo/professional-young-psychologist-trying-get-through-girl-with-problems_23-2148026225.jpg?t=st=1721808840~exp=1721812440~hmac=fdde5195b13d4e1ef3dc54acce7c19602a9c1c9e5ff7671595e81d93e514e257&w=1060',
+    image: image9,
     date: '2024-09-01',
     initialLikes: 7,
     initialRating: 4.3,

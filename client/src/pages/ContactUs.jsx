@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import contactImage from './assets/images/contactus.avif';
 
 export default function ContactUs() {
   const form = useRef();
@@ -83,7 +84,7 @@ export default function ContactUs() {
         {/* Image Section */}
         <div
           className="hidden md:block md:w-1/2 bg-cover bg-center rounded-lg"
-          style={{ backgroundImage: "url('https://img.freepik.com/free-vector/customer-support-flat-design-illustration_23-2148889374.jpg?t=st=1721809315~exp=1721812915~hmac=f83ebe1db8b42cbe23c176318305c7ce3129ac4b00f13b7535b5ae4c84f2dc65&w=740')" }}
+          style={{ backgroundImage: `url(${contactImage})` }}
         ></div>
       </div>
     </div>
